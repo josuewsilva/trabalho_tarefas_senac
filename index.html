@@ -43,12 +43,20 @@
     </nav>
 
     <div class="container">
-        <div>
-            nova tarefa com input de texto e ícone do lado
-        </div>
+      <div class="d-grid gap-2 col-6 mx-auto mt-5">
+        <button class="btn btn-primary" type="button">Nova tarefa</button>
+      </div>
 
-        <div>
-            Filtro com campo de selecção de opções de filtro
+        <div class="d-grid gap-2 col-6 mx-auto mt-3">
+          <label for="exampleDataList " class="form-label text-light">Escolha o filtro:</label>
+          <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+          <datalist id="datalistOptions">
+            <option value="San Francisco">
+            <option value="New York">
+            <option value="Seattle">
+            <option value="Los Angeles">
+            <option value="Chicago">
+          </datalist>
         </div>
 
         <div>
@@ -67,9 +75,7 @@
             </div>
         </div>
     </div>
-=======
-    <h1>Olá Josué! Agora deu certo</h1>
->>>>>>> 0f97c09fdedbaba31bd448ce6ca06e1ffb72545a
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
   </body>
 </html>
