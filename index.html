@@ -44,19 +44,22 @@
 
     <div class="container">
       <div class="d-grid gap-2 col-6 mx-auto mt-5">
-        <button class="btn btn-primary" type="button">Nova tarefa</button>
+        <input type="text" id="tarefa" name="incluirtarefa" placeholder="Digite sua Tarefa">
+        <button class="btn btn-primary" type="button">Incluir Tarefa</button>
       </div>
 
         <div class="d-grid gap-2 col-6 mx-auto mt-3">
-          <label for="exampleDataList " class="form-label text-light">Escolha o filtro:</label>
-          <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
-          <datalist id="datalistOptions">
-            <option value="San Francisco">
-            <option value="New York">
-            <option value="Seattle">
-            <option value="Los Angeles">
-            <option value="Chicago">
-          </datalist>
+          <p><label for="exampleDataList " class="text-body-secondary">Escolha o filtro: </label>
+        
+            <select name="datalist" id="datalistOptions">
+              <form>
+                <option value="Todas">Todas</option>
+                <option value="Concluidas">Concluidas</option>
+                <option value="Pendentes">Pendentes</option>
+              </form>
+            </select>
+
+          </p>
         </div>
 
         <div>
