@@ -1,116 +1,181 @@
 <!doctype html>
 <html lang="pt-br">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Controle de Tarefas</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <link rel="stylesheet" href="estilo.css">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LISTA DE TAREFAS</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
 
-    <script>
-      function adicionarTarefa() {
-            
-          let input = document.getElementById('tarefa');
-          let itemlista = input.value.trim();
-
-          if(itemlista !== "")
-          {
-            let lista = document.getElementById('minhastarefas');
-
-            let novoItem = document.createElement('li');
-            novoItem.textContent = itemlista;
-
-            lista.appendChild(novoItem);
-
-            input.value = " ";
-          }else{
-
-            alert(" Digite um item da lista antes de adicionar!")
-          }
-      }
-
-    </script>
-  </head>
-
-  <body>
-    <thead>
-      <nav class="navbar navbar-expand-lg bg-success text-light">
-          <div class="container-fluid ">
-              <div class="d-flex">
-                  <div class="foto-perfil me-2"></div>
-                  <span>
-                      <h5>nome do usuário</h5>
-                      <p class="paragrafo-status fst-italic">status(data ultima nota)</p>
-                  </span>
-              </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav ms-5">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Principal</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Tarefas</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Sobre</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-
-      <nav class="">
-          
-      </nav>
-  </thead>
-
-  <tbody>
-
-    <div class="container">
-      <div class="d-grid gap-2 col-6 mx-auto mt-5">
-        <input type="text" id="tarefa" name="incluirtarefa" placeholder="Digite sua Tarefa">
-        <button class="btn btn-primary" type="button" onclick="adicionarTarefa()">Incluir Tarefa</button>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-success text-light">
+    <div class="container-fluid">
+      <div class="d-flex">
+        <div class="foto-perfil me-2"></div>
+        <span>
+          <h5>REMIND TAREFAS</h5>
+        </span>
       </div>
+    </div>
+  </nav>
 
-        <div class="d-grid gap-2 col-6 mx-auto mt-3">
-          <p><label for="exampleDataList " class="text-body-secondary">Escolha o filtro: </label>
-        
-            <select name="datalist" id="datalistOptions">
-              <form>
-                <option value="Todas">Todas</option>
-                <option value="Concluidas">Concluidas</option>
-                <option value="Pendentes">Pendentes</option>
-              </form>
-            </select>
-
-          </p>
-        </div>
-        
-        <ul id="minhastarefas">
-        </ul>
-
-        <br><div>
-            últimas tarefas
-            <div>
-                ícone de seleção, última tarefa, ícone de status (concluída ou pendente), ícone lixeira
-            </div>
-            <div>
-                ícone de seleção, penúltima tarefa, ícone de status (concluída ou pendente), ícone lixeira
-            </div>
-            <div>
-                ícone de seleção, antepenúltima tarefa, ícone de status (concluída ou pendente), ícone lixeira
-            </div>
-            <div>
-                ícone de seleção, anterior tarefa, ícone de status (concluída ou pendente), ícone lixeira */ teste /*
-            </div>
-        </div>
+  <!-- Conteúdo principal -->
+  <div class="container">
+    <!-- Botão para abrir modal -->
+    <div class="d-grid gap-2 col-6 mx-auto mt-5">
+      <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modalTarefa">
+        Incluir Tarefa
+      </button>
     </div>
 
-  </tbody>
+    <!-- Modal -->
+    <div class="modal fade" id="modalTarefa" tabindex="-1" aria-labelledby="modalTarefaLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalTarefaLabel">Nova Tarefa</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+          </div>
+          <div class="modal-body">
+            <input type="text" id="tarefa" placeholder="Digite sua tarefa" class="form-control mb-2">
+            
+            <!-- Campo de Data -->
+            <input type="date" id="dataTarefa" class="form-control mb-2">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
-  </body>
+            <!-- Campo de Hora -->
+            <input type="time" id="horaTarefa" class="form-control mb-2">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" onclick="adicionarTarefa()">Salvar Tarefa</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Abas de Tarefas -->
+    <div class="d-grid gap-2 col-6 mx-auto mt-4">
+      <!-- Navegação das abas -->
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" id="pendentes-tab" data-bs-toggle="tab" href="#pendentes" role="tab" aria-controls="pendentes" aria-selected="true">Pendentes</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="concluidas-tab" data-bs-toggle="tab" href="#concluidas" role="tab" aria-controls="concluidas" aria-selected="false">Concluídas</a>
+        </li>
+      </ul>
+
+      <!-- Conteúdo das abas -->
+      <div class="tab-content" id="myTabContent">
+        <!-- Lista de Tarefas Pendentes -->
+        <div class="tab-pane fade show active" id="pendentes" role="tabpanel" aria-labelledby="pendentes-tab">
+          <ul id="tarefasPendentes" class="list-group mt-3">
+            <!-- Tarefas pendentes serão adicionadas aqui -->
+          </ul>
+        </div>
+
+        <!-- Lista de Tarefas Concluídas -->
+        <div class="tab-pane fade" id="concluidas" role="tabpanel" aria-labelledby="concluidas-tab">
+          <ul id="tarefasConcluidas" class="list-group mt-3">
+            <!-- Tarefas concluídas serão adicionadas aqui -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function adicionarTarefa() {
+      let tarefaInput = document.getElementById('tarefa');
+      let dataInput = document.getElementById('dataTarefa');
+      let horaInput = document.getElementById('horaTarefa');
+
+      let tarefaTexto = tarefaInput.value.trim();
+      let dataSelecionada = dataInput.value;
+      let horaSelecionada = horaInput.value;
+
+      if (tarefaTexto !== "" && dataSelecionada !== "" && horaSelecionada !== "") {
+        let listaPendente = document.getElementById('tarefasPendentes');
+        let listaConcluida = document.getElementById('tarefasConcluidas');
+
+        // Cria elemento <li>
+        let novoItem = document.createElement('li');
+        novoItem.className = 'list-group-item d-flex justify-content-between align-items-center';
+
+        // Cria checkbox
+        let checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.className = 'form-check-input me-2';
+        
+        // Texto da tarefa
+        let texto = document.createElement('span');
+        texto.textContent = tarefaTexto + " (Data: " + dataSelecionada + ", Hora: " + horaSelecionada + ")";
+
+        // Ao clicar na checkbox
+        checkbox.addEventListener('change', function () {
+          texto.classList.toggle('text-decoration-line-through', this.checked);
+
+          // Move a tarefa para a lista de concluídas ou pendentes
+          if (this.checked) {
+            listaConcluida.appendChild(novoItem);
+          } else {
+            listaPendente.appendChild(novoItem);
+          }
+        });
+
+        // Container da tarefa
+        let tarefaContainer = document.createElement('div');
+        tarefaContainer.className = 'd-flex align-items-center';
+        tarefaContainer.appendChild(checkbox);
+        tarefaContainer.appendChild(texto);
+
+        // Botões
+        let botoes = document.createElement('div');
+
+        // Editar
+        let botaoEditar = document.createElement('button');
+        botaoEditar.className = 'btn btn-sm btn-warning me-2';
+        botaoEditar.textContent = 'Editar';
+        botaoEditar.onclick = function () {
+          let novoTexto = prompt("Editar tarefa:", texto.textContent);
+          if (novoTexto !== null && novoTexto.trim() !== "") {
+            texto.textContent = novoTexto.trim() + " (Data: " + dataSelecionada + ", Hora: " + horaSelecionada + ")";
+          }
+        };
+
+        // Deletar
+        let botaoDeletar = document.createElement('button');
+        botaoDeletar.className = 'btn btn-sm btn-danger';
+        botaoDeletar.textContent = 'Excluir';
+        botaoDeletar.onclick = function () {
+          listaPendente.removeChild(novoItem);
+          listaConcluida.removeChild(novoItem);
+        };
+
+        // Junta tudo
+        botoes.appendChild(botaoEditar);
+        botoes.appendChild(botaoDeletar);
+        novoItem.appendChild(tarefaContainer);
+        novoItem.appendChild(botoes);
+
+        // Adiciona na lista de pendentes
+        listaPendente.appendChild(novoItem);
+
+        // Limpa os campos e fecha o modal
+        tarefaInput.value = "";
+        dataInput.value = "";
+        horaInput.value = "";
+        const modal = bootstrap.Modal.getInstance(document.getElementById('modalTarefa'));
+        modal.hide();
+      } else {
+        alert("Preencha todos os campos antes de adicionar a tarefa!");
+      }
+    }
+  </script>
+
+  <!-- Bootstrap Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
